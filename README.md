@@ -39,15 +39,6 @@ This is a Spring Boot-based application that [describe what your application doe
 - [Any other tools you are using, e.g., Docker]
 
 ### Installation Steps
-1. Clone the repository:
-
-   ```bash
-   git init
-   git remote add origin https://github.com/ArsalanFallah/tech-spring-boot.git
-   git checkout -b session-third
-
-   git add .
-   git commit -m "Initial commit"
-   git push -u origin feature-branch
-   git push -u origin
+1. Clone the repository:   
+ ```bash
    git clone https://github.com/ArsalanFallah/tech-spring-boot.git
