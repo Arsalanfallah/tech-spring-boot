@@ -18,9 +18,9 @@
 This is a Spring Boot-based application that [describe what your application does]. It includes features such as [list some key features or functionality].
 
 ## Features
-- Feature 1
-- Feature 2
-- Feature 3
+- Mapstruct
+- Swagger
+- Lombok
 
 ## Technologies
 - **Java**: 17 (or your version)
