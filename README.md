@@ -28,6 +28,7 @@ This is a Spring Boot-based application that [describe what your application doe
 - **Maven**: [or Gradle if you use that]
 - **Database**: H2, MySQL, PostgreSQL (whichever you're using)
 - **Swagger/OpenAPI**: For API documentation
+-    http://localhost:8080/swagger-ui/index.html  
 - **JUnit/Mockito**: For unit and integration testing
 
 ## Setup and Installation
@@ -43,5 +44,3 @@ This is a Spring Boot-based application that [describe what your application doe
  ```bash
    git clone https://github.com/ArsalanFallah/tech-spring-boot.git
 
-### Swagger Url
-- http://localhost:8080/swagger-ui/index.html 
