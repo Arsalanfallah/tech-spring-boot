@@ -3,6 +3,7 @@ package com.tech.dto;
 import com.tech.entity.StudentType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,7 +23,8 @@ public class StudentRequest implements Serializable {
     @NotNull
     private Integer age;
     @NotBlank(message = "The nationalCode must not be null and must contain at least one non-whitespace character")
-    @Size(min = 10, max = 10, message = "nationalCode must be at most 500 characters, and has at least one character")
+    //@Size(min = 10, max = 10, message = "nationalCode must be at most 500 characters, and has at least one character")
+    @Pattern(regexp = "^\\d{10}$", message = "National code must be a 10-digit number")
     private String nationalCode;
 
     private StudentType studentType;
