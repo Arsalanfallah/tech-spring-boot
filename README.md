@@ -38,7 +38,9 @@ This is a Spring Boot-based application that [describe what your application doe
 - Maven (or Gradle)
 - An IDE (e.g., IntelliJ IDEA, Eclipse) or text editor
 - [Any other tools you are using, e.g., Docker]
-
+### Oracle Datasource
+- If you want to install and config in windows,first you must download oracle with following address:
+-https://www.oracle.com/database/technologies/xe-downloads.html
 ### Installation Steps
  Clone the repository:   
  ```bash
