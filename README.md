@@ -51,6 +51,8 @@ This is a Spring Boot-based application that [describe what your application doe
 - 5- SQL> create user student identified by password default talespace users quota unlimited on users;
 - 6- SQL> grant create session,create table to student;
 - 7- SQL> connect student/password@localhost:1521/XEPDB1;
+- Then open CMD as Administrator and run this command
+- lsnrctl status
 ### Installation Steps
  Clone the repository:   
  ```bash
