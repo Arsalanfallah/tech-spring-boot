@@ -18,11 +18,9 @@ import java.util.Set;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-/*
+//    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "student_seq_gen")
     @SequenceGenerator(name = "student_seq_gen", sequenceName = "student_seq", allocationSize = 1)
-*/
     private Long id;
 
     @Column(name = "name")
