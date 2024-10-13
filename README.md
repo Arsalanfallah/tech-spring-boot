@@ -38,7 +38,21 @@ This is a Spring Boot-based application that [describe what your application doe
 - Maven (or Gradle)
 - An IDE (e.g., IntelliJ IDEA, Eclipse) or text editor
 - [Any other tools you are using, e.g., Docker]
-
+### Oracle Datasource
+- If you want to install and config in windows,first you must download oracle with following address:
+- https://www.oracle.com/database/technologies/xe-downloads.html
+- If you want to learn how to install this you can watch this video
+- Https://www.youtube.com/watch?v=DYleroLay5E
+- After you install on your computer please , do following steps:
+- 1- go to Windows Menu of Oracle and click SQLPLUS
+- 2- Enter user-name: / as sysdba;
+- 3- SQL> select name from v$pdbs;
+- 4- SQL> connect sys/password@localhost:1521/XEPDB1 as sysdba;
+- 5- SQL> create user student identified by password default talespace users quota unlimited on users;
+- 6- SQL> grant create session,create table to student;
+- 7- SQL> connect student/password@localhost:1521/XEPDB1;
+- Then open CMD as Administrator and run this command
+- lsnrctl status
 ### Installation Steps
  Clone the repository:   
  ```bash
