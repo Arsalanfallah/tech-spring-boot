@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,6 +34,7 @@ public class Student {
     private String nationalCode;
     @Column(name = "student_type")
     private StudentType studentType;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "student_id", nullable = false) // This column will hold the foreign key
     private Set<Lesson> lessons;
