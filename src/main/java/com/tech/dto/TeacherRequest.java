@@ -1,6 +1,7 @@
 package com.tech.dto;
 
 import com.tech.entity.StudentType;
+import com.tech.entity.TeacherType;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -15,8 +16,8 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentRequest implements Serializable {
-    private final static long serialVersionUID = 3940954723216972217L;
+public class TeacherRequest implements Serializable {
+    private final static long serialVersionUID = 3940954723216972211L;
     @NotBlank(message = "The name must not be null and must contain at least one non-whitespace character")
     private String name;
     @NotNull
@@ -26,9 +27,7 @@ public class StudentRequest implements Serializable {
     @Pattern(regexp = "^\\d{10}$", message = "National code must be a 10-digit number")
     private String nationalCode;
     private String birthDate;
-    private StudentType studentType;
+    private TeacherType teacherType;
 
-    private Set<LessonRequest> lessonRequests=new HashSet<>();
-    private Set<TeacherRequest> teacherRequests=new HashSet<>();
-
+    private Set<StudentRequest> studentRequests=null;
 }

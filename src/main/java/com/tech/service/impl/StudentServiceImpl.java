@@ -7,6 +7,7 @@ import com.tech.exceptions.ResourceNotFoundException;
 import com.tech.mapper.StudentMapper;
 import com.tech.repository.StudentRepository;
 import com.tech.service.StudentService;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +29,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
+    @SneakyThrows
     public StudentResponse saveStudent(StudentRequest studentRequest) {
         Student student = studentMapper.requestToEntity(studentRequest);
         student = studentRepository.save(student);

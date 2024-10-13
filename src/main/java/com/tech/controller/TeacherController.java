@@ -15,12 +15,12 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-@RequestMapping("/services/students/v1")
-public class StudentController {
+@RequestMapping("/services/teachers/v1")
+public class TeacherController {
 
     private final StudentService studentService;
 
-    public StudentController(StudentService studentService) {
+    public TeacherController(StudentService studentService) {
         this.studentService = studentService;
     }
 

@@ -23,7 +23,7 @@ public class StudentControllerTest {
 
     @Test
     public void testSaveStudent() throws Exception {
-        String studentJson = "{ \"name\": \"John\", \"age\": 45, \"nationalCode\": \"1234567890\", \"studentType\": \"NORMAL\" }";
+        String studentJson = "{ \"name\": \"John\", \"age\": 45, \"nationalCode\": \"1234567890\",\"birthDate\": \"1978-04-06\", \"studentType\": \"NORMAL\" }";
 
         mockMvc.perform(post("/services/students/v1/saveStudent")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -32,6 +32,7 @@ public class StudentControllerTest {
                 .andExpect(jsonPath("$.name").value("John"))
                 .andExpect(jsonPath("$.age").value(45))
                 .andExpect(jsonPath("$.nationalCode").value("1234567890"))
+                .andExpect(jsonPath("$.birthDate").value("1978-04-06"))
                 .andExpect(jsonPath("$.studentType").value("NORMAL"));
     }
 }

@@ -53,6 +53,8 @@ This is a Spring Boot-based application that [describe what your application doe
 - 7- SQL> connect student/password@localhost:1521/XEPDB1;
 - Then open CMD as Administrator and run this command
 - lsnrctl status
+### H2 Datasource
+  - http://localhost:8080/h2-ui/
 ### Installation Steps
  Clone the repository:   
  ```bash

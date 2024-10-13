@@ -15,6 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import static org.mockito.ArgumentMatchers.any;
+
+import java.time.Instant;
+import java.util.Date;
 import java.util.Set;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
@@ -33,8 +36,14 @@ public class StudentServiceTest {
     @Test
     public void testSaveStudent() {
         // Given
-        Set<Lesson> lessonSet=Set.of(new Lesson(null,"Math","MATH"));
-        Student student = new Student(null,"John", 16, "1234567891", StudentType.NORMAL,lessonSet);
+        Set<Lesson> lessonSet=Set.of( Lesson.builder().name("Math").code("MATH").build());
+        Student student=Student.builder().name("John")
+                .age(16)
+                .nationalCode("1234567891")
+                .studentType(StudentType.NORMAL)
+                .lessons(lessonSet)
+                .birthDate(Date.from(Instant.parse("1978-04-06T00:00:00Z")))
+                .createdAt(Instant.now()).build();
         StudentRequest studentRequest=mapper.entityToRequest(student);
         // Mocking repository behavior
         Mockito.when(studentRepository.save(Mockito.any(Student.class))).thenReturn(student);
