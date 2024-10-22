@@ -22,6 +22,8 @@ This is a Spring Boot-based application that [describe what your application doe
 - Swagger
 - Lombok
 - Retryable
+  In Spring Boot, the @Retryable annotation is used to automatically retry a method when it throws a specified exception. This is useful for handling transient issues like network timeouts or external service failures that may resolve themselves after a short period. 
+ 
 
 ## Technologies
 - **Java**: 17 (or your version)
