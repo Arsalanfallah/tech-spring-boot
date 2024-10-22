@@ -4,11 +4,15 @@ import com.tech.dto.StudentRequest;
 import com.tech.dto.StudentResponse;
 import com.tech.entity.Student;
 import com.tech.exceptions.ResourceNotFoundException;
+import com.tech.exceptions.StudentException;
 import com.tech.mapper.StudentMapper;
 import com.tech.repository.StudentRepository;
 import com.tech.service.StudentService;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Recover;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -83,5 +87,21 @@ public class StudentServiceImpl implements StudentService {
         }
 
         return response;
+    }
+    @Retryable(
+            value = { StudentException.class },
+            maxAttempts = 4,
+            backoff = @Backoff(delay = 2000)
+    )
+    public String retryableMethod() throws StudentException {
+        // Some logic that could throw StudentException
+        System.out.println("Trying...");
+        throw new StudentException("Operation failed");
+    }
+    // Recovery method invoked after retries are exhausted
+    @Recover
+    public String recover(StudentException e) {
+        System.out.println("Recovering from failure: " + e.getMessage());
+        return "Default fallback response";
     }
 }

@@ -27,6 +27,8 @@ public class StudentController {
     @Operation(summary = "Save Student message")
     @PostMapping(path = "/saveStudent")
     public ResponseEntity<StudentResponse> saveStudent(@RequestBody  /*@Valid*/ StudentRequest studentRequest) {
+        //Shows Retryable feature in Spring Boot
+        studentService.retryableMethod();
         StudentResponse studentResponse=studentService.saveStudent(studentRequest);
         return new ResponseEntity<>(studentResponse, HttpStatus.OK);
     }
@@ -60,5 +62,13 @@ public class StudentController {
            return new ResponseEntity<>(new StudentResponse(),HttpStatus.NOT_FOUND);
 
        }
+    }
+    @Operation(summary = "Shows Retryable feature in Spring Boot")
+    @GetMapping(path = "/retry-test")
+    public ResponseEntity<StudentResponse> retryTest() {
+        //Shows Retryable feature in Spring Boot
+        studentService.retryableMethod();
+
+        return new ResponseEntity<>(new StudentResponse(), HttpStatus.OK);
     }
 }

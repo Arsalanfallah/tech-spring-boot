@@ -4,6 +4,7 @@ import com.tech.dto.StudentRequest;
 import com.tech.dto.StudentResponse;
 import com.tech.entity.Student;
 import com.tech.exceptions.ResourceNotFoundException;
+import com.tech.exceptions.StudentException;
 
 import java.util.List;
 
@@ -18,4 +19,7 @@ public interface StudentService {
 
     StudentResponse updateStudent(Long id, StudentRequest newStudent);
 
-}
+    String retryableMethod() throws StudentException ;
+
+
+    }
