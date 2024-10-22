@@ -21,6 +21,7 @@ This is a Spring Boot-based application that [describe what your application doe
 - Mapstruct
 - Swagger
 - Lombok
+- Retryable
 
 ## Technologies
 - **Java**: 17 (or your version)
