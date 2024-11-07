@@ -1,0 +1,2 @@
+package com.tech.repository;public interface UserRepository {
+}
