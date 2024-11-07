@@ -14,6 +14,8 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ActiveProfiles;
+
 import static org.mockito.ArgumentMatchers.any;
 
 import java.time.Instant;
@@ -22,8 +24,8 @@ import java.util.Set;
 
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-@Transactional
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ActiveProfiles("test")
 public class StudentServiceTest {
     @MockBean
     private StudentRepository studentRepository;

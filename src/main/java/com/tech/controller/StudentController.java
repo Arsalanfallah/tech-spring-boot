@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.lang.NonNull;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class StudentController {
     }
 
     @Operation(summary = "Save Student message")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping(path = "/saveStudent")
     public ResponseEntity<StudentResponse> saveStudent(@RequestBody  /*@Valid*/ StudentRequest studentRequest) {
         //Shows Retryable feature in Spring Boot

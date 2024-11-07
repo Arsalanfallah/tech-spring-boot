@@ -1,21 +1,27 @@
 package com.tech.service.impl;
 
+import com.tech.dto.UserDTO;
+import com.tech.dto.UserRegisterDTO;
+import com.tech.entity.AppUser;
 import com.tech.repository.UserRepository;
+import com.tech.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@Service
-public class CustomUserDetailsService implements UserDetailsService {
+@Service("customUserDetailsService")
+public class CustomUserDetailsServiceImpl implements CustomUserDetailsService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public CustomUserDetailsService(UserRepository userRepository) {
+    public CustomUserDetailsServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -28,15 +34,14 @@ public class CustomUserDetailsService implements UserDetailsService {
                         .build())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
-    public User registerUser(String username, String password) {
-        if (userRepository.findByUsername(username).isPresent()) {
+    public AppUser registerUser(UserRegisterDTO userRegisterDTO) {
+        if (userRepository.findByUsername(userRegisterDTO.getUsername()).isPresent()) {
             throw new IllegalArgumentException("Username is already taken.");
         }
 
-        User newUser = new User();
-        newUser.setUsername(username);
-        newUser.setPassword(passwordEncoder.encode(password));
-        newUser.setRole("USER"); // Default role
+        AppUser newUser =  AppUser.builder().username(userRegisterDTO.getUsername()).
+                passwordHash(passwordEncoder.encode(userRegisterDTO.getPassword())).
+                role(userRegisterDTO.getRole()).build();
 
         return userRepository.save(newUser);
     }

@@ -2,21 +2,22 @@ package com.tech.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "app-user")
 @Data
-@RequiredArgsConstructor
-public class User {
+@AllArgsConstructor // Generates a constructor for all fields, necessary for @Builder
+@NoArgsConstructor  // Required for JPA
+@Builder
+public class AppUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, updatable = false)
     private Long id;
 
-    @Column(name = "username", nullable = false, unique = true)
+    @Column(name = "username", nullable = false)
     private String username;
 
     @Column(name = "password_hash", nullable = false)

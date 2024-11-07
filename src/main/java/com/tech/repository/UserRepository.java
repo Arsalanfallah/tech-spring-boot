@@ -1,2 +1,11 @@
-package com.tech.repository;public interface UserRepository {
+package com.tech.repository;
+
+import com.tech.entity.AppUser;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<AppUser, Long> {
+
+    Optional<AppUser> findByUsername(String username);
 }
