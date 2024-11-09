@@ -26,7 +26,7 @@ public class StudentController {
     }
 
     @Operation(summary = "Save Student message")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(path = "/saveStudent")
     public ResponseEntity<StudentResponse> saveStudent(@RequestBody  /*@Valid*/ StudentRequest studentRequest) {
         //Shows Retryable feature in Spring Boot

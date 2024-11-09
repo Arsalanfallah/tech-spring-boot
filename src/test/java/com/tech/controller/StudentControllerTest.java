@@ -15,6 +15,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath; // Use this import
 
@@ -41,10 +42,12 @@ public class StudentControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(studentJson))
                 .andExpect(status().isOk())
+                .andDo(print())  // This will print the response details to the console
                 .andExpect(jsonPath("$.name").value("John"))
                 .andExpect(jsonPath("$.age").value(45))
                 .andExpect(jsonPath("$.nationalCode").value("1234567890"))
                 .andExpect(jsonPath("$.birthDate").value("1978-04-06"))
                 .andExpect(jsonPath("$.studentType").value("NORMAL"));
+
     }
 }
