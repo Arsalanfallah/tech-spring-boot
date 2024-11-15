@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -32,11 +33,11 @@ class SecurityConfig  {
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for simplicity; enable in production for security
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/public/**","/api/auth/**").permitAll() // Allow public endpoints
+                        .requestMatchers("/public/**","/h2-console/**","/api/auth/**").permitAll() // Allow public endpoints
                         .anyRequest().authenticated()              // Require authentication for all other endpoints
                 )
                 .httpBasic(withDefaults()); // Use the updated `httpBasic(withDefaults())` method
-
+        http.headers(h -> h.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
         return http.build();
     }
 
