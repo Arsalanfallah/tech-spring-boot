@@ -24,9 +24,11 @@ public class Student extends Person{
     private StudentType studentType;
 
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "student_id", nullable = false) // This column will hold the foreign key
-    private Set<Lesson> lessons;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "student_course",
+            joinColumns = @JoinColumn(name = "student_id",referencedColumnName="id"),
+            inverseJoinColumns =@JoinColumn(name = "courses_id",referencedColumnName="id") )
+    private Set<Course> courses;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "student_teacher",

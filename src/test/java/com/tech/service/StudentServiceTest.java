@@ -2,12 +2,11 @@ package com.tech.service;
 
 import com.tech.dto.StudentRequest;
 import com.tech.dto.StudentResponse;
-import com.tech.entity.Lesson;
+import com.tech.entity.Course;
 import com.tech.entity.Student;
 import com.tech.entity.StudentType;
 import com.tech.mapper.StudentMapper;
 import com.tech.repository.StudentRepository;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -38,12 +37,12 @@ public class StudentServiceTest {
     @Test
     public void testSaveStudent() {
         // Given
-        Set<Lesson> lessonSet=Set.of( Lesson.builder().name("Math").code("MATH").build());
+        Set<Course> courseSet =Set.of( Course.builder().name("Math").code("MATH").build());
         Student student=Student.builder().name("John")
                 .age(16)
                 .nationalCode("1234567891")
                 .studentType(StudentType.NORMAL)
-                .lessons(lessonSet)
+                .courses(courseSet)
                 .birthDate(Date.from(Instant.parse("1978-04-06T00:00:00Z")))
                 .createdAt(Instant.now()).build();
         StudentRequest studentRequest=mapper.entityToRequest(student);

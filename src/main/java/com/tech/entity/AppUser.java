@@ -26,6 +26,8 @@ public class AppUser {
     @Column(name = "role", nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
+    @Column(name = "status", nullable = true)
+    private Integer status;
 
 
     @Override

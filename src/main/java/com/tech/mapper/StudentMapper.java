@@ -14,19 +14,19 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface StudentMapper {
-    @Mapping(source ="lessons" ,target ="lessonRequests" )
+    @Mapping(source ="courses" ,target ="lessonRequests" )
     @Mapping(source ="teachers" ,target ="teacherRequests" )
     @Mapping(source = "birthDate", target ="birthDate", dateFormat = "yyyy-MM-dd")
     StudentRequest entityToRequest(Student source);
-    @Mapping(source ="lessonRequests" ,target ="lessons" )
+    @Mapping(source ="lessonRequests" ,target ="courses" )
     @Mapping(source ="teacherRequests" ,target ="teachers" )
     @Mapping(target = "birthDate", expression = "java(mapStringToDate(source.getBirthDate()))")
     Student requestToEntity(StudentRequest source)throws java.text.ParseException;;
-    @Mapping(source ="lessons" ,target ="lessonResponses" )
+    @Mapping(source ="courses" ,target ="lessonResponses" )
     @Mapping(source ="teachers" ,target ="teacherResponses" )
     @Mapping(source = "birthDate", target ="birthDate", dateFormat = "yyyy-MM-dd")
     StudentResponse entityToResponse(Student source);
-    @Mapping(source ="lessons" ,target ="lessonResponses" )
+    @Mapping(source ="courses" ,target ="lessonResponses" )
     @Mapping(source ="teachers" ,target ="teacherResponses" )
     @Mapping(source = "birthDate", target ="birthDate", dateFormat = "yyyy-MM-dd")
     List<StudentResponse> listEntityToResponses(List<Student> sourceStudents);

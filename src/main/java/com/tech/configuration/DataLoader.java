@@ -18,12 +18,14 @@ public class DataLoader {
             user.setUsername("user");
             user.setPasswordHash(passwordEncoder.encode("password"));
             user.setRole(Role.USER);
+            user.setStatus(1);
             repository.save(user);
 
             AppUser admin = new AppUser();
             admin.setUsername("admin");
             admin.setPasswordHash(passwordEncoder.encode("admin"));
             admin.setRole(Role.ADMIN);
+            user.setStatus(1);
             repository.save(admin);
         };
     }
